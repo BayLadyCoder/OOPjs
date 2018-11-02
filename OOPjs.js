@@ -19,8 +19,8 @@ This duck object has two property/value pairs: a name of "Aflac" and a numLegs o
 Create a dog object with name and numLegs properties, and set them to a string and a number, respectively.
 */
 let dog = {
-    name: "TOby",
-    numLegs: 4
+  name: "TOby",
+  numLegs: 4
 };
 
 /*
@@ -40,13 +40,12 @@ Dot notation is used on the object name, duck, followed by the name of the prope
 Print both properties of the dog object below to your console.
 */
 let dog = {
-    name: "Spot",
-    numLegs: 4
+  name: "Spot",
+  numLegs: 4
 };
 // Add your code below this line
 console.log(dog.name);
 console.log(dog.numLegs);
-
 
 /*
 Object Oriented Programming: Create a Method on an Object
@@ -70,11 +69,11 @@ Notice that the method accessed the name property in the return statement using 
 Using the dog object, give it a method called sayLegs. The method should return the sentence "This dog has 4 legs."
 */
 let dog = {
-    name: "Spot",
-    numLegs: 4,
-    sayLegs: function () {
-        return "This dog has " + dog.numLegs + " legs.";
-    }
+  name: "Spot",
+  numLegs: 4,
+  sayLegs: function() {
+    return "This dog has " + dog.numLegs + " legs.";
+  }
 };
 
 dog.sayLegs();
@@ -103,15 +102,14 @@ If the object's name is changed to mallard, it is not necessary to find all the 
 Modify the dog.sayLegs method to remove any references to dog. Use the duck example for guidance.
 */
 let dog = {
-    name: "Spot",
-    numLegs: 4,
-    sayLegs: function () {
-        return "This dog has " + this.numLegs + " legs.";
-    }
+  name: "Spot",
+  numLegs: 4,
+  sayLegs: function() {
+    return "This dog has " + this.numLegs + " legs.";
+  }
 };
 
 dog.sayLegs();
-
 
 /*
 Object Oriented Programming: Define a Constructor Function
@@ -137,11 +135,10 @@ Constructors define properties and behaviors instead of returning a value as oth
 Create a constructor, Dog, with properties name, color, and numLegs that are set to a string, a string, and a number, respectively.
 */
 function Dog() {
-    this.name = "Toby";
-    this.color = "white";
-    this.numLegs = 4;
+  this.name = "Toby";
+  this.color = "white";
+  this.numLegs = 4;
 }
-
 
 /*
 Object Oriented Programming: Use a Constructor to Create Objects
@@ -171,14 +168,12 @@ blueBird.name; // => Elvira
 Use the Dog constructor from the last lesson to create a new instance of Dog, assigning it to a variable hound.
 */
 function Dog() {
-    this.name = "Rupert";
-    this.color = "brown";
-    this.numLegs = 4;
+  this.name = "Rupert";
+  this.color = "brown";
+  this.numLegs = 4;
 }
 // Add your code below this line
 let hound = new Dog();
-
-
 
 /*
 Object Oriented Programming: Extend Constructors to Receive Arguments
@@ -214,13 +209,12 @@ The constructor is more flexible. It's now possible to define the properties for
 Create another Dog constructor. This time, set it up to take the parameters name and color, and have the property numLegs fixed at 4. Then create a new Dog saved in a variable terrier. Pass it two strings as arguments for the name and color properties.
 */
 function Dog(name, color) {
-    this.name = name;
-    this.color = color;
-    this.numLegs = 4;
+  this.name = name;
+  this.color = color;
+  this.numLegs = 4;
 }
 
 let terrier = new Dog("Toby", "brown");
-
 
 /*
 Object Oriented Programming: Verify an Object's Constructor with instanceof
@@ -251,7 +245,7 @@ Create a new instance of the House constructor, calling it myHouse and passing a
 /* jshint expr: true */
 
 function House(numBedrooms) {
-    this.numBedrooms = numBedrooms;
+  this.numBedrooms = numBedrooms;
 }
 
 // Add your code below this line
@@ -259,3 +253,47 @@ function House(numBedrooms) {
 let myHouse = new House(5);
 
 myHouse instanceof House;
+
+/*
+Object Oriented Programming: Understand Own Properties
+
+In the following example, the Bird constructor defines two properties: name and numLegs:
+
+function Bird(name) {
+  this.name = name;
+  this.numLegs = 2;
+}
+
+let duck = new Bird("Donald");
+let canary = new Bird("Tweety");
+name and numLegs are called own properties, because they are defined directly on the instance object. That means that duck and canary each has its own separate copy of these properties.
+
+In fact every instance of Bird will have its own copy of these properties.
+
+The following code adds all of the own properties of duck to the array ownProps:
+
+let ownProps = [];
+
+for (let property in duck) {
+  if(duck.hasOwnProperty(property)) {
+    ownProps.push(property);
+  }
+}
+
+console.log(ownProps); // prints [ "name", "numLegs" ]
+
+Add the own properties of canary to the array ownProps.
+*/
+function Bird(name) {
+  this.name = name;
+  this.numLegs = 2;
+}
+
+let canary = new Bird("Tweety");
+let ownProps = [];
+// Add your code below this line
+for (let property in canary) {
+  if (canary.hasOwnProperty(property)) {
+    ownProps.push(property);
+  }
+}
