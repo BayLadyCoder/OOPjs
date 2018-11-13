@@ -71,7 +71,7 @@ Using the dog object, give it a method called sayLegs. The method should return 
 let dog = {
   name: "Spot",
   numLegs: 4,
-  sayLegs: function () {
+  sayLegs: function() {
     return "This dog has " + dog.numLegs + " legs.";
   }
 };
@@ -104,7 +104,7 @@ Modify the dog.sayLegs method to remove any references to dog. Use the duck exam
 let dog = {
   name: "Spot",
   numLegs: 4,
-  sayLegs: function () {
+  sayLegs: function() {
     return "This dog has " + this.numLegs + " legs.";
   }
 };
@@ -378,7 +378,6 @@ for (let property in beagle) {
   }
 }
 
-
 /*
 
 Object Oriented Programming: Understand the Constructor Property
@@ -414,12 +413,9 @@ function Dog(name) {
 
 // Add your code below this line
 function joinDogFraternity(candidate) {
-  if (candidate.constructor === Dog)
-    return true;
-  else
-    return false;
+  if (candidate.constructor === Dog) return true;
+  else return false;
 }
-
 
 /*
 Object Oriented Programming: Change the Prototype to a New Object
@@ -457,10 +453,10 @@ function Dog(name) {
 Dog.prototype = {
   // Add your code below this line
   numLegs: 2,
-  eat: function () {
+  eat: function() {
     console.log("nom nom nom");
   },
-  describe: function () {
+  describe: function() {
     console.log("My name is " + this.name);
   }
 };
@@ -495,10 +491,36 @@ function Dog(name) {
 Dog.prototype = {
   constructor: Dog, // Define the constructor property
   numLegs: 2,
-  eat: function () {
+  eat: function() {
     console.log("nom nom nom");
   },
-  describe: function () {
+  describe: function() {
     console.log("My name is " + this.name);
   }
 };
+
+/*
+Object Oriented Programming: Understand Where an Object’s Prototype Comes From
+
+Just like people inherit genes from their parents, an object inherits its prototype directly from the constructor function that created it. For example, here the Bird constructor creates the duck object:
+
+function Bird(name) {
+  this.name = name;
+}
+
+let duck = new Bird("Donald");
+duck inherits its prototype from the Bird constructor function. You can show this relationship with the isPrototypeOf method:
+
+Bird.prototype.isPrototypeOf(duck);
+// returns true
+
+Use isPrototypeOf to check the prototype of beagle.
+*/
+function Dog(name) {
+  this.name = name;
+}
+
+let beagle = new Dog("Snoopy");
+
+// Add your code below this line
+Dog.prototype.isPrototypeOf(beagle);
